@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<title>PPI</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="css/main.css">
+<style>
+ table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+ }
+ th, td {
+  padding: 5px;
+ }
+ th {
+  text-align: left;
+ }
+
+ .solutions {
+   display: none;
+   padding-top: 25px;
+ }
+</style>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script>
+MathJax = {
+  tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+};
+</script>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<body>
+
+<!--<img src="img_la.jpg" alt="LA" style="width:100%">
+
+<div class="">
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+<p>This is another paragraph.</p>
+</div>
+
+-->
+
+<div class="wrapper">
+  <button><a href="index.html">Back</a></button>
+  <div class="body">
+    <h1 style="margin-left: 490px;">Programming Principles I</h1>
+    <h2 style="margin-left: 150px;">Week 1: Intro to the course, C programming language, IDE and editors<br>
+        Variables, type definitions<br>
+        Standard input/output operations</h2>
+
+    <h4>Content overview</h4>
+    <ul>
+      <li><a href="#topic1">The most basic instructions</a></li>
+      <li><a href="#topic2">C program development phases</a></li>
+      <li><a href="#topic3">Types of errors</a></li>
+      <li><a href="#topic4">Standard input and output</a></li>
+      <li><a href="#topic5">Variables</a></li>
+      <li>Naming conventions</li>
+      <li>Variable naming rules</li>
+      <li>C keywords</li>
+      <li>Assignment</li>
+      <li>Integral data types</li>
+      <li>Operators</li>
+      <li>Types of errors</li>
+    </ul>
+    <br>
+    <div id="topic1">
+      <h3>The most basic instructions</h3>
+      <p>
+        As far as we know , people can give instructions to a computer for their performing .<br>
+        The basic ones are :<br>
+        1) Input - When program asks input from user<br>
+        2) Output - When program prints something to the monitor<br>
+        3) Arithmetic - Some arithmetic calculations happens<br>
+        4) Decision - There can be some operations which programs acts if something happened or some statements are true. If something true ,programs will do something <br>
+        5) Repetitions
+      </p>
+    </div>
+    <div id="topic2">
+      <h3>C program development phases</h3>
+      <p>
+        1) Editing the program<br>
+        2) Preprocessing<br>
+        3) Compiling<br>
+        4) Linker <br>
+        5) Loading <br>
+        6) Execution <br>
+
+
+        C adds a preprocessing step to the program creation process. The C preprocessor acts upon special instructions that can be contained in the C source code. These special preprocessor instructions are called preprocessor directives.  These are #include, #ifndef, #define, and #endif.<br>
+        The second item of interest is the assembly code file and assembler step shown at the bottom. Program routines can be created in other languages and compiled into object modules and then later linked with object modules created with C. This is often referred to as mixed-language programming.<br><br>
+        Computers don’t understand C or any other programming language. They understand only machine language.<br>
+        Three programs are used to translate your source code into an executable file that the computer can run. These programs are, in their order of appearance:<br>
+        Preprocessor<br>
+        Compiler<br>
+        Linker<br>
+        </p>
+        <img src="img/week1_1.png"></img>
+        <p>
+        <h4>Preprocessor</h4>
+        The preprocessor is a program that scans the source code for preprocessor directives such as include directives. The preprocessor inserts into the source code all files included by the include directives.<br>
+        In this example, the stdio standard library file is included by an include directive. Therefore, the preprocessor directive inserts the contents of that standard library file, including its definition of the printf object, into the source code file.<br>
+
+        <h4>Compiler</h4>
+        The compiler is another program that translates the preprocessed source code (the source code after the insertions made by the preprocessor) into corresponding machine language instructions, which are stored in a separate file, called an object file, having an .obj extension. There are different compilers for different programming languages, but the purpose of the compiler is essentially the same, the translation of a programming language into machine language, no matter which programming language is involved.<br>
+
+        The compiler can understand your code and translate it into machine language only if your code is in the proper syntax for that programming language. C, like other programming languages, and indeed most human languages, has rules for the spelling of words and for the grammar of statements. If there is a syntax error, then the compiler cannot translate your code into machine language instructions, and instead will call your attention to the syntax errors. Thus, in a sense, the compiler acts as a spell checker and grammar checker.<br>
+        <h4>Linker</h4>
+        While the object file has machine language instructions, the computer cannot run the object file as a program. The reason is that C also needs to use another code library, called the run-time library, for common operations, such as the translation of keyboard input or the ability to interact with external hardware such as the monitor to display a message.
+        The linker is a third program that combines the object file with the necessary parts of the run-time library. The result is the creation of an executable file with an .exe extension. The computer runs this file to display “Hello World!” on the screen.<br>
+
+        <h4>C program development phases</h4>
+        About C program development phases:<br>
+        1) first you need to edit your code and save it in .c format .<br>
+        2) Then you need to preprocess and compile a C program. <br>
+        The programmer gives the command to compile the program. In a C system, a preprocessor program executes automatically before the compiler’s translation phase begins (so we call preprocessing phase 2 and compiling phase 3). The C preprocessor obeys commands called preprocessor directives, which indicate that certain manipulations are to be performed on the program before compilation. These manipulations usually include other text files to be compiled and perform various text replacements.<br>
+        3) Then linking happens. C programs typically contain references to functions and data defined elsewhere, such as in the standard libraries or in the private libraries of groups of programmers working on a particular project. The object code produced by the C compiler typically contains “holes” due to these missing parts. A linker links the object code with the code for the missing functions to produce an executable image (with no missing pieces). If the program compiles and links correctly, an executable image is produced.<br>
+        4) The next step is loading. called loading. Before a program can be executed, it must first be placed in memory. This is done by the loader, which takes the executable image from disk and transfers it to memory. Additional components from shared libraries that support the program are also loaded. <br>
+        5) The final step is execution . Finally, the computer, under the control of its CPU, executes the program one instruction at a time.
+            Programs do not always work on the first try. Each of the preceding phases can fail because of various errors. For example, an executing program might attempt to divide by zero (an illegal operation for whole-number arithmetic in C). This would cause the C program to display an error message. If this occurs, you would have to return to phase-1 for editing, make the necessary corrections and proceed through the remaining phases again to determine that the corrections fix the problem(s).<br>
+            Most programs in C input and/or output data. Certain C functions take their input from scanf , which is normally the keyboard, but scanf can be redirected to another device. Data is often output to printf , which is normally the computer screen, but printf can be redirected to another device. When we say that a program prints a result, we normally mean that the result is displayed on a screen. Data may be output to other devices, such as disks and hardcopy printers. There is also a standard error stream referred to as cerr. The cerr stream (normally connected to the screen) is used for displaying error messages. It is common for users to assign printf to a device other than the screen while keeping cerr assigned to the screen, so that normal outputs are separated from errors. <br>
+
+
+
+      </p>
+      <img src="img/week1_2.png"></img>
+      <img src="img/week1_3.png"></img>
+      <br>
+    </div>
+    <div id="topic3">
+       <h4>Type of Errors</h4>
+       <p>
+         There are can be some scenaries when something goes wrong .
+         You can have such types of error<br>
+         <ul>
+           <li>Compile (time)</li>
+           <li>Runtime error</li>
+           <li>Logic error</li>
+         </ul>
+         The first type of error ,it is when compilation of your program tooks a lot of time or you have syntax error ,which you need to fix .<br>
+         The second type of error , when your program terminated immediately . It can be if you divided on zero , or allocated to the wrong memory adress or trying to access an element that does not exist in memory or you are using a lot of memory, an infinite loop or recursion problem, etc. <br>
+         The last one type of error ,when your program works incorrectly and doesn't work as you want .<br>
+       </p>
+
+    </div>
+    <div id="topic4">
+       <h4>Input/Output</h4>
+       <p>
+         As it was already mentioned previously , Certain C functions take their input from stdin(the standard input stream), which is normally the keyboard, but stdin can be connected to another stream.<br>
+         Data is often output to stdout(the standard output stream), which is normally the computer screen, but stdoutcan be connected to another stream.<br>
+         There is also a standard error streamreferred to as stderr.The stderrstream (normally connected to the screen) is used for displaying error messages.<br>
+       </p>
+    </div>
+    <div id="topic5">
+      <h4>Variables</h4>
+      <p>
+        A variableis a named location that stores a value.<br>
+        Imagine a cupholding tea.<br>
+        Imagine the same cup holding coffee.<br>
+        Imagine the same cup holding orange juice.<br>
+        <u>Note: We can change the liquid stored in the same cup.<br>
+          Similarly, We can change the valuestored in the same variable.
+        </u>
+        <br>
+        Declaration of a variable:<br><br>
+        First, you need to point the type of variable (you will read about it later) , then type the name of variable.<br><br>
+        Examples:<br>
+        float x;<br>
+        int age;<br>
+        long long numberOfMoves;<br>
+
+      </p>
+
+    </div>
+    <div id="topic6">
+      <h4>Rules of naming variables</h4>
+      <p>
+       <ul>
+        <li> A variable name can only have letters (both uppercase and lowercase letters), digits and underscore.</li>
+        <li>The first letter of a variable should be either a letter or an underscore.</li>
+        <li>There is no rule on how long a variable name (identifier) can be. However, you may run into problems in some compilers if the variable name is longer than 31 characters.</li>
+       </ul>
+
+      </p>
+
+    </div>
+
+
+
+
+<script>
+function myFunction() {
+  var x = document.getElementById('solutions1');
+  x.style.display = "block";
+
+}
+
+</script>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>
