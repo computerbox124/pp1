@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<title>PPI</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="css/main.css">
+<style>
+ table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+ }
+ th, td {
+  padding: 5px;
+ }
+ th {
+  text-align: left;
+ }
+
+ .solutions {
+   display: none;
+   padding-top: 25px;
+ }
+</style>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script>
+MathJax = {
+  tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+};
+</script>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<body>
+
+<!--<img src="img_la.jpg" alt="LA" style="width:100%">
+
+<div class="">
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+<p>This is another paragraph.</p>
+</div>
+
+-->
+
+<div class="wrapper">
+  <button><a href="index.html">Back</a></button>
+  <div class="body">
+    <h1 style="margin-left: 490px;">Programming Principles I</h1>
+    <h2 style="margin-left: 150px;">Week 8: Functions, Recursion</h2>
+
+    <h4>Content overview</h4>
+    <ul>
+      <li><a href="#topic1">Need for functions</a></li>
+      <li><a href="#topic2">How do they work?</a></li>
+      <li><a href="#topic3">Properties of functions</a></li>
+      <li><a href="#topic4">Function prototype vs definition</a></li>
+      <ul>
+        <li><a href="#topic4">Function definition</a></li>
+        <li><a href="#topic4.1">Different types of functions</a></li>
+        <li><a href="#topic4.2">Function prototype</a></li>
+
+      </ul>
+      <li><a href="#topic5">Variable scopes (Local vs Global variables)</a></li>
+      <li><a href="#topic6">Function call-by-value</a></li>
+      <li><a href="#topic7">Recursive functions</a></li>
+      <li>Identifying base case and inductive step</li>
+      <li>Recursive algorithms</li>
+    </ul>
+    <br>
+    <div id="topic1">
+      <h3>Why we use functions</h3>
+      <p>
+         Imagine you have the task or process,which you have defined and you need repeat it more than one time.<br>
+         Will you rewrite all lines of this task ?
+         For example we have the task to find the maximum element in the array and then delete it .<br>
+         We will use this task 5 times and reusement all of these lines of code is not efficient.<br><br>
+         Functions are used to:<br>
+      </p>
+      <ol>
+        <li>Modularize programs</li>
+        <li>Increased readability</li>
+        <li>Easier changes in the code</li>
+        <li>Team Work</li>
+      </ol>
+      <br>
+      <p>
+        Two main categories of functions:
+        <ul>
+          <li>C standard library functions</li>
+          <li>Programmer-defined functons</li>
+        </ul>
+      </p>
+
+
+    </div>
+    <div id="topic2">
+      <h3>How do they work ?</h3>
+      <p>
+        Functions are invoked by function calls.<br>
+        Every function call contains the <b>name of the functon</b> being invoked and the <b>list of values</b><br>
+        <b>(can be empty)</b> as an input for the function to get its job done.<br>
+        In this process we have two parties:<br>
+        <ol>
+          <li>Caller or Callng function ( from where we are calling the function )</li>
+          <li>Called function (invoked function)</li>
+        </ol>
+        Called function finishes its task and reports back to caller about it.
+      </p>
+    </div>
+    <div id="topic3">
+      <h3>Properties of function</h3>
+      <ul>
+        <li>Name (how can the function be called/invoked)</li>
+        <li>Input (information passed in when the function is invoked)</li>
+        <li>Output(information returned by the invoked function when finishes the task)</li>
+        <li>Body(how function maps the input into output)</li>
+      </ul>
+    </div>
+    <div id="topic4">
+      <h3>Function definition</h3>
+      <p>
+        Just like any other variable we have defined so far,functions must also be defined before to be called later.<br><br>
+        Function definition has the following syntax:<br>
+        <b>return_type</b> function_name(type1 par1, type2 par2, .....){<br>
+          //function body<br>
+        }<br><br>
+        Let's define our square function ,which works only with integers:<br>
+        ---------Syntax---------<br>
+        <b>return_type</b> function_name(type1 par1, type2 par2, .....){<br>
+          //function body<br>
+        }<br><br>
+
+        ---------square(x)--------<br>
+        <b>int</b> square(int x){<br>
+          return x*x<br>
+        }<br><br>
+
+
+      </p>
+    </div>
+    <div id="topic4.1">
+      <h3>Different types of functons</h3>
+      <ol>
+       <li>Input -> return value</li>
+       <li>Input -> no return value</li>
+       <li>No input -> return value</li>
+       <li>No input -> no return value</li>
+      </ol>
+      <h4>Examples:</h4>
+      <p>
+        1. ----cube(x)----<br>
+        int square(int x){<br>
+          return x*x*x;<br>
+        }<br>
+        2. -----greetings(x)------------<br>
+        void greeting(char name[]){<br>
+          printf(“Welcome, %s\n, name);<br>
+        }<br>
+        3. ----rollADie()------------<br>
+        int rollADie(){<br>
+          return rand()%6 + 1;<br>
+        }
+        4. ----printMenu()---------<br>
+        voidprintMenu(){<br>
+          printf("Enter 1 to do Option1");<br>
+          printf("Enter 2 to do Option2");<br>
+          printf("Enter 0 to Exit");<br>
+        }<br>
+      </p>
+    </div>
+    <div>
+
+    </div>
+
+
+
+
+
+<script>
+function myFunction() {
+  var x = document.getElementById('solutions1');
+  x.style.display = "block";
+
+}
+
+</script>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>
