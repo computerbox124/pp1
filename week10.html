@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title>PPI</title>
+ <meta name="viewport" content="width=device-width,initial-scale=1">
+ <link rel="stylesheet" href="css/main.css">
+ <link rel="stylesheet" href="css/prism.css">
+
+ <style>
+ table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+ }
+ th, td {
+  padding: 5px;
+ }
+ th {
+  text-align: left;
+ }
+
+  .solutions {
+   display: none;
+   padding-top: 25px;
+  }
+ </style>
+ <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+ <script>
+ MathJax = {
+  tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+ };
+ </script>
+
+ <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+<body class="line-numbers">
+  <script src="js/prism.js"></script>
+
+<!--<img src="img_la.jpg" alt="LA" style="width:100%">
+
+<div class="">
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+<p>This is another paragraph.</p>
+</div>
+
+-->
+
+<div class="wrapper">
+  <button><a href="index.html">Back</a></button>
+  <div class="body">
+    <h1 style="margin-left: 490px;">Programming Principles I</h1>
+    <h2 style="margin-left: 150px;">Week 10: Intro to memory management, pointers , Dynamic memory allocation</h2>
+
+    <h4>Content overview</h4>
+    <ul>
+      <li><a href="#topic1">Pointers</a></li>
+      <ul>
+        <li><a href="#topic1.1">Declaration, initialization</a></li>
+      </ul>
+      <li><a href="#topic2">Address of and indirection operators</a></li>
+      <li><a href="#topic3">Call by value vs call by reference</a></li>
+      <li><a href="#topic4">Constant Pointers</a></li>
+
+    </ul>
+    <br>
+    <div id="topic1">
+      <h4>Introduction to Pointers</h4>
+      <p>
+        All variables reserve some <u>memory segment</u> to store their values.<br><br>
+        <b>Where are these segments ?</b><br>
+        You can revise this topic <b>here</b> /* TODO */ <br><br>
+        <b>Recall disc vs RAM?</b><br>
+        You can revise this topic <b>here</b> /* TODO */
+        <br><br>
+        Pointers are variables; thus, a pointer also has a value.<br>
+        Pointers are the variables that store <u>memory addresses</u>. Usually, pointer stores a value, which is an <u>address</u> , say variable.
+        <table>
+           <tr>
+             <th><b>Variable</b></th>
+             <th><b>Pointer</b></th>
+           </tr>
+           <tr>
+             <td>Stores value directly<br>Can Access the value directly</td>
+             <td>Stores address of another variable.Can access the value indirectly (access the address of variable directly, and access its value)</td>
+           </tr>
+
+        </table>
+        Referencing a value using pointers is called <b>indirection</b>.
+      </p>
+      <div id="topic1.1">
+        <h4>Pointers - declaraton</h4>
+        <pre><code class="language-c">int *aPtr,*ptrA,*pA;
+float *bPtr,*ptrB,*pB;
+char *cPtr,*ptrC,*pC;</code></pre>
+
+        <p>
+          Just like any variable, pointers must be declared before they are used:<br>
+
+            type *pointer_name;<br>
+
+          <b>Note:</b>Note: asterisk (*) is a prefix, it does not apply to all the variables in the declaration.<br>
+          int *aPtr;<br>
+          aPtr is a variable.<br>
+          aPtr is also a pointer to an int.<br>
+          <b>Note:</b> <em>later you will understand better why it is important to state pointer to <b>int</b>, and how it is different than, say, pointer to <b>char</b></em>.
+        </p>
+        <h4>Pointers assigment</h4>
+        <p>
+          Pointers, like any other variable can be declared and assigned some value at the same time (initialization) or later.<br>
+          <pre><code class="language-c">int a = 10;
+int *aPtr;
+aPtr = &a;</code></pre>
+          & is unary <b>address of</b> operator.
+          <pre><code class="language-c">int *aP=aPtr;</code></pre>
+          assigning the value of <b>aPr</b> ( the address of variable <b>a</b>, to <b>aP</b> )
+
+          <em>What is the value of a variable if it is not initialized as soon as it is defined?</em> <br>
+          Pointers are variables. Better to initialize them.<br>
+          Header <stddef.h> defines symbolic constant NULL which can be used to initialize pointers, if you are not sure of the initial value. (<stdio.h> also defines it)
+          NULL indicates that the pointer is pointing to NOWHERE currently.
+          An alternative is to use 0(ZERO) (but it is not recommended).
+
+        </p>
+
+      </div>
+    </div>
+    <div id="topic2">
+      <p>
+      Once stored, how the values are accessed and treated then?<br>
+      We use <b>asterisk (*)</b> again.
+      It is also known as <b>indirection</b> or <b>dereferencing</b> operator. (instead of directly accessing the value, you access address there the value is stored).
+      </p>
+      <pre><code class="language-c">int a=5,*aPtr = NULL;
+aPtr = &a;
+int newA = *aPtr;</code></pre>
+
+      <h5>Precedence of operators</h5>
+      <img src="img/week10_1.png">
+
+
+    </div>
+    <div id="topic3">
+      <h4>Function call by reference</h4>
+      <p>
+        When you pass an argument by <u>value</u>, all the changes made within the function will lose affect on the original value.
+        When you pass an argument by <u>reference</u> though, the modifications are made <b>directly<b> on the <b>original value</b>.
+        Using <b>address of (&)</b> and <b>indirection (*)</b> operators, any variable can be passed into a function by reference.
+    </div>
+    <div id="topic4">
+      <h4>Constant Pointers</h4>
+    </div>
+
+    <div id="topic5">
+
+    </div>
+
+
+
+
+<script>
+function myFunction() {
+  var x = document.getElementById('solutions1');
+  x.style.display = "block";
+
+}
+
+</script>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>
