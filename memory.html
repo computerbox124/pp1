@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title>PPI</title>
+ <meta name="viewport" content="width=device-width,initial-scale=1">
+ <link rel="stylesheet" href="css/main.css">
+ <link rel="stylesheet" href="css/prism.css">
+
+ <style>
+ table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+ }
+ th, td {
+  padding: 5px;
+ }
+ th {
+  text-align: left;
+ }
+
+  .solutions {
+   display: none;
+   padding-top: 25px;
+  }
+ </style>
+ <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+ <script>
+ MathJax = {
+  tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+ };
+ </script>
+
+ <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+<body class="line-numbers">
+  <script src="js/prism.js"></script>
+
+<!--<img src="img_la.jpg" alt="LA" style="width:100%">
+
+<div class="">
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+<p>This is another paragraph.</p>
+</div>
+
+-->
+
+<div class="wrapper">
+  <button><a href="index.html">Back</a></button>
+  <div class="body">
+    <h1 style="margin-left: 490px;">Programming Principles I</h1>
+    <h2 style="margin-left: 10px;">Program Memory</h2>
+
+    <h4>Content overview</h4>
+    <ul>
+      <li><a href="#topic1">Introduction</a></li>
+      <li><a href="#topic2">Data Segment</a></li>
+      <li><a href="#topic3">BSS Segment</a></li>
+      <li><a href="#topic4">Heap</a></li>
+      <li><a href="#topic5">Stack</a></li>
+      <li><a href="#topic6">Code Segment</a></li>
+    </ul>
+    <br>
+    <div id="topic1">
+      <p>
+        The Von Neumann architecture is defined by the fact that both the machine instructions and data are stored in the same memory space. This fact necessitates dividing memory into text and data segments.<br>
+        In the computer memory, the program is organized as follows :
+      </p>
+      <img src="img/memory_1.png">
+    </div>
+
+     <div id="topic2">
+       <h3>Data Segment</h3>
+       <p>
+         Data segment consists of static and global variables that are explicitly initialized with values. This segment can be further broken down into ro-data (read only data), a read-only data segment, and rw-data (read write data), a read / write data segment. For example, global variables
+       </p>
+       <pre><code class="language-c">s[] = "hello world";
+int debug=1</code></pre>
+       <p>
+         Will be stored in the rw-area.
+       </p>
+       For an expression like
+       <pre><code class="language-c">const char* string = "hello world"</code></pre>
+       <p>
+        the pointer will be stored in the rw-area, and the string literal "hello world" in the ro-area.
+      </p>
+      <pre><code class="language-c">static int i = 10;
+int i = 10;</code></pre>
+      <p>both will be located in the data segment.</p>
+     </div>
+
+     <div id="topic3">
+      <h3>BSS segment  (block started by symbol)</h3>
+      contains uninitialized global variables, or static variables without explicit initialization. This segment starts immediately after the data segment. Typically, the program loader initializes the bss area when loading the application with zeros. The fact is that the variables in the data area are initialized - that is, they overwrite the allocated memory area with their values. Since the variables in the bss area are not explicitly initialized, they could theoretically have the value that was previously stored in this area, and this is a vulnerability that provides access to, possibly, private data. Therefore, the loader is forced to zero all values. Due to this, both uninitialized global variables and static variables are equal to zero by default.
+    </div>
+
+    <div id="topic4">
+      <h3>Heap segment</h3>
+      <p>begins behind the BSS segment and grows from there, correspondingly with an increase in the address. This section is used to allocate memory on it using the malloc function (and others) and to clear it using the free function. </p>
+    </div>
+    <div id="topic5">
+      <h3>Stack</h3>
+     <p>usually grows "towards" the heap, that is, as the stack grows, the address of the top of the stack decreases. A set of values that are pushed onto the stack by one function is called a frame. After exiting the function, the stack is freed from the frame. One frame stores at least one value - the return address. Every time we create local variables, they are placed on the stack. As soon as we exit the function, the stack is cleared and the variables disappear. Function calls and parameters are also passed through the stack.</p>
+    </div>
+    <div id="topic6">
+      <h3>Code segment</h3>
+      <p>
+        just text, contains executable instructions. It has a fixed size and is usually used only for reading, but if you can write to it, then the architecture supports self-modification. The code segment is located after the start of the stack, so if it grows, it [the stack] does not overlap the code segment.
+      </p>
+
+
+
+    </div>
+
+
+
+
+
+<script>
+function myFunction() {
+  var x = document.getElementById('solutions1');
+  x.style.display = "block";
+
+}
+
+</script>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>
